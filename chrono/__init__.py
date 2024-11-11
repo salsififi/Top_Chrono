@@ -1,0 +1,1 @@
+"""Paquet 'chrono' (paquet principal)"""
