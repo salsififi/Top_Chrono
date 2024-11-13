@@ -25,28 +25,22 @@ class CliView(BaseView):
         """Vue quand le chronomètre est stoppé."""
         print(self.Messages.EXIT)
 
-    def welcome_view(self) -> None:
-        """Vue de lancement du programme."""
-        print(self.Messages.LAUNCH)
-        print(self.Messages.KEYS)
-        print()
-
     def reset_view(self) -> None:
         """Vue à la réinitialisation du chronomètre."""
         print(self.Messages.RESET)
         print(self.Messages.TIMELAPSE.format(chrono_value=f"{0:.{ROUNDING_PRECISION}f}"))
 
-    def run_view(self) -> None:
-        """Vue au lancement du programme."""
-        print(self.Messages.LAUNCH)
-        print(self.Messages.KEYS)
-        print()
-
     def start_chrono_view(self) -> None:
         """Vue quand le chronomètre est lancé."""
         print(self.Messages.START)
 
-    def stop_chrono_view(self) -> None:
+    def stop_chrono_view(self, chrono_value: float) -> None:
         """Vue quand le chronomètre est stoppé."""
         print(self.Messages.STOP)
-        print(self.Messages.TIMELAPSE.format(chrono_value=f"{self.chrono.value:.{ROUNDING_PRECISION}f}"))
+        print(self.Messages.TIMELAPSE.format(chrono_value=f"{chrono_value:.{ROUNDING_PRECISION}f}"))
+
+    def welcome_view(self) -> None:
+        """Vue de lancement du programme."""
+        print(self.Messages.LAUNCH)
+        print(self.Messages.KEYS)
+        print()

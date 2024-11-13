@@ -53,7 +53,4 @@ class Chrono:
 
     def toggle(self) -> None:
         """Bascule de start à stop et inversement."""
-        if self.is_running:
-            self.stop()
-        else:
-            self.start()
+        self.stop() if self.is_running else self.start()

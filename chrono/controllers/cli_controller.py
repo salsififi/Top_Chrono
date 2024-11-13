@@ -1,12 +1,13 @@
 """Contient la classe CliController"""
 import sys
+from typing import NoReturn
 
 import keyboard
 
 from chrono.constants import TOGGLE_CHRONO_KEY, RESET_CHRONO_KEY, EXIT_KEY
 from chrono.models.chrono import Chrono
 from chrono.models.exceptions import StartError, StopError, ResetWhileRunningError, ResetAlreadyAtZeroError
-from chrono.views.cli_wiew import CliView
+from chrono.views.cli_view import CliView
 
 
 class CliController:
@@ -18,7 +19,7 @@ class CliController:
     def __init__(self, chrono: Chrono) -> None:
         """Par défaut, le KeyboardListener est actif"""
         self.chrono = chrono
-        self.view = CliView(self.chrono)
+        self.view = CliView()
         self.is_running = True
 
     def press_toggle_key(self) -> None:
@@ -28,7 +29,7 @@ class CliController:
             if self.chrono.is_running:
                 self.view.start_chrono_view()
             else:
-                self.view.stop_chrono_view()
+                self.view.stop_chrono_view(self.chrono.value)
         except StartError as e:
             print(e)
         except StopError as e:
@@ -55,7 +56,7 @@ class CliController:
             elif event.name == EXIT_KEY:
                 self.is_running = False
 
-    def run(self):
+    def run(self) -> NoReturn:
         """Exécute le contrôleur"""
         self.view.welcome_view()
         keyboard.hook(self.on_key_event, suppress=True)

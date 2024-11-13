@@ -48,4 +48,4 @@ Vous pouvez, si vous le souhaitez, gérer le lancement, l'arrêt et le reset du 
 
 ## Remerciements
 Merci à toute l'équipe UpYourSkills du serveur Discord de Docstring pour la création de 
-ces challenges, et l'accompagnement proposé !
+ces challenges et l'accompagnement proposé, et un merci particulier à @Rocket pour ses commentaires sur ce challenge.
